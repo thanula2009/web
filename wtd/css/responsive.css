@@ -1,0 +1,81 @@
+/* ==========================================================
+   Responsive rules: tablet <= 1024px, mobile <= 720px
+   ========================================================== */
+
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; text-align: left; }
+  .hero-copy { max-width: 100%; }
+  .hero {
+    padding-top: calc(var(--header-h) + 1.5rem);
+    background-size: auto, auto, auto, auto, auto 112%;
+    background-position: center, center, center, center, 80% 0%;
+  }
+  .quick-links { grid-template-columns: repeat(2, 1fr); }
+  .quick-links li:nth-child(2) { border-right: 0; }
+  .quick-links li:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .news-list, .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .intro-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid > :first-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 1160px) {
+  .nav-toggle { display: inline-grid; place-items: center; }
+  .brand { max-width: calc(100% - 60px); }
+  .primary-nav {
+    position: fixed; inset: var(--header-h) 0 auto 0;
+    background: rgba(4, 20, 15, 0.98); backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+    padding: 1rem 1.25rem 2rem;
+    max-height: calc(100vh - var(--header-h));
+    overflow-y: auto;
+    transform: translateY(-110%); visibility: hidden;
+    transition: transform 0.45s var(--ease), visibility 0s 0.45s;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  }
+  .primary-nav.is-open { transform: none; visibility: visible; transition: transform 0.45s var(--ease); }
+  .nav-list { flex-direction: column; align-items: stretch; gap: 0; }
+  .nav-list a { padding: 1rem 0.5rem; border-bottom: 1px solid rgba(224, 181, 58, 0.15); border-radius: 0; font-size: 1.1rem; }
+  .nav-list a[aria-current="page"] { box-shadow: none; }
+  .nav-list a[aria-current="page"]::after { display: none; }
+  
+}
+
+@media (max-width: 720px) {
+  :root { --header-h: 68px; }
+  body { font-size: 1rem; }
+  .container { width: min(100% - 2rem, var(--container)); }
+  .brand { gap: 0.55rem; }
+  .brand-emblem-frame { flex-basis: 42px; width: 42px; height: 42px; }
+  .brand-emblem-frame .brand-crest { width: 100%; height: 100%; }
+  .brand-divider { height: 30px; }
+  .brand-line-1 { font-size: clamp(0.72rem, 3.2vw, 0.92rem); white-space: normal; }
+  .brand-line-2 { font-size: 0.7rem; }
+  .brand-line-3 { display: block; font-size: 0.62rem; }
+  
+  .news-list, .feature-grid { grid-template-columns: 1fr; }
+  .quick-links { grid-template-columns: 1fr; }
+  .quick-links li { border-right: 0; border-bottom: 1px solid var(--line); }
+  .quick-links li:last-child { border-bottom: 0; }
+  
+  .hero {
+    background-position: center, 70% top;
+    background-size: cover, auto 82%;
+    background-image:
+      linear-gradient(180deg, rgba(2, 11, 8, 0.52) 0%, rgba(2, 11, 8, 0.72) 34%, rgba(2, 11, 8, 0.96) 70%, #020b08 100%),
+      url('../images/hero-clean-bg.jpg');
+    padding-top: calc(var(--header-h) + 2.5rem);
+    padding-bottom: 4rem;
+    min-height: max(100svh, 720px);
+  }
+  .hero-welcome { font-size: 1.3rem; }
+  .hero-college-title .hero-name { font-size: clamp(2.1rem, 10vw, 3.1rem); }
+  .hero-college-title .hero-college { font-size: clamp(2.2rem, 10.4vw, 3.2rem); }
+  .hero-college-title .hero-national { font-size: 1.3rem; }
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 1rem; }
+  .btn-explore { justify-content: center; }
+  .btn-video { justify-content: center; }
+  .hero-scroll-cue-container { display: none; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
